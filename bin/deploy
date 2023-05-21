@@ -1,0 +1,9 @@
+#!/bin/bash
+
+./bin/build
+
+cd terraform
+
+terraform apply
+
+cd ..

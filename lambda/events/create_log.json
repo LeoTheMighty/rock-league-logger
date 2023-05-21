@@ -1,0 +1,4 @@
+{
+  "httpMethod": "POST",
+  "body": "{\"user_id\": \"test\", \"content\": \"Test Log Content\"}"
+}

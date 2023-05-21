@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! "$1" ]; then
+  echo "Provide argument for event to run"
+
+  exit 1
+fi
+
+./bin/build
+
+cd lambda
+
+sam local invoke -e "$1"
+
+cd ..

@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: A sample SAM template for deploying Lambda functions.
+
+Resources:
+  # Details about the myDateTimeFunction Lambda function
+  RockLeagueLogger:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: main
+      Runtime: go1.x
+      CodeUri: ./
+      MemorySize: 512
+      Timeout: 10
+      # Instructs your myDateTimeFunction is published to an alias named "live".
+      AutoPublishAlias: live
+      # Grants this function permission to call lambda:InvokeFunction
+      Policies:
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: "Allow"
+              Action:
+                - "lambda:InvokeFunction"
+              Resource: '*'
+      Events:
+        LoggerPost:
+          Type: Api
+          Properties:
+            Path: /logger
+            Method: post
+        LoggerPatch:
+          Type: Api
+          Properties:
+            Path: /logger
+            Method: patch
+        LoggerDelete:
+          Type: Api
+          Properties:
+            Path: /logger
+            Method: delete
+        LoggerGet:
+          Type: Api
+          Properties:
+            Path: /logger
+            Method: get
