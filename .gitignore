@@ -1,2 +1,6 @@
 .DS_Store
 .idea
+
+# ignore build assets
+lambda/lambda.zip
+lambda/main

@@ -91,7 +91,7 @@ func handleDelete(event LoggerRequestEvent) (events.APIGatewayProxyResponse, err
 func handleGet(event LoggerRequestEvent) (events.APIGatewayProxyResponse, error) {
 	svc := initDynamoDB()
 
-	result, err := queryLogs(svc, event.StartAt, event.Limit)
+	result, err := queryLogs(svc, event.UserID, event.StartAt, event.Limit)
 	if err != nil {
 		return handleError(err), nil
 	}
